@@ -1,0 +1,27 @@
+@(eventForm: Form[controllers.forms.student.EventForm])
+
+@import helper._
+
+@views.html.student.main("申込確認") {
+
+<h1>申込キャンセル画面</h1>
+	@if(eventForm.get().message != null) {
+		@eventForm.get().message
+	}
+	<h4>以下の情報をキャンセルします。</h4>
+	<h4>よろしければ、送信ボタンを押してください。</h4>
+     @form(CSRF(controllers.student.routes.Event.cancel)) {
+	<table border="1">
+     	<tr><td><label>氏名</label></td><td>@eventForm.get().entryUserName</td></tr>
+	    <tr><td><label>ID</label></td><td>@eventForm.get().entryUserId</td></tr>
+     	<tr><td><label>開催日</label></td><td>@eventForm.get().eventDate</td></tr>
+     	<tr><td><label>イベント名</label></td><td>@eventForm.get().eventName</td></tr>
+     	<tr><td><label>会場名</label></td><td>@eventForm.get().eventVenueName</td></tr>
+     </table>
+		<input type="hidden" value="@eventForm.get().entryUserId" name="entryUserId">
+		<input type="hidden" value="@eventForm.get().eventScheduleId" name="eventScheduleId">
+		<input type="hidden" value="@eventForm.get().eventId" name="eventId">
+	    <input type="button" class = "btn primary" value = "戻る" onclick="javascript:history.back();"/>
+	    <input type="submit" class = "btn primary" value = "送信"/>
+     }
+}

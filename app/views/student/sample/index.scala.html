@@ -1,0 +1,50 @@
+@(sample: Form[controllers.student.Sample.SampleForm])
+
+@import helper._
+@import play.i18n._
+
+<!-- このファイルはサンプルなのでいずれけします -->
+<!-- FIXME　このファイルはサンプルなのでいずれけします -->
+
+
+<!--  画面個別のスタイルとJS渡したい場合、以下のようにする -->
+@stylesheets = {
+  <link rel="stylesheet"
+        media="screen"
+        href="@routes.Assets.at("stylesheets/" + lang().language() + "/student/sample/index.min.css")"></link>
+}
+@scripts = {
+  <script src="@routes.Assets.at("javascripts/student/sample/index.min.js")"></script>
+}
+
+<!--
+  渡すべきスタイルやJSがない場合は、
+  名前付き引き数にして、からのコンテンツ(=Html(""))渡す
+-->
+@views.html.student.main("this is sample", stylesheets, scripts) {
+
+
+    @form(CSRF(controllers.student.routes.Sample.doTest())) {
+    	
+    	<span>Test111</span><br/>
+    	<span>@sample.hasGlobalErrors</span>
+        @if(sample.globalError != null) {
+            <p class="error" style="color: red;">@sample.globalError.message</p>
+        }
+
+        <p>
+          @(helper.inputText (
+			field = sample("email")
+			))
+        </p>
+        
+        <p>
+          @(helper.inputText (
+			field = sample("count")
+			))
+        </p>
+    	
+    	<input type="submit" onclick="" />
+    }
+}
+

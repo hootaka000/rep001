@@ -1,0 +1,19 @@
+@(login: Form[controllers.forms.student.LoginForm])
+@import helper._
+
+@views.html.student.main("ログイン") {
+
+    <a href="@controllers.student.routes.Application.agree">新規登録</a>
+    @form(CSRF(controllers.student.routes.Application.login)) {
+        <h2>ログイン</h2>
+        @if(login.hasGlobalErrors) {
+          <p class="error">@login.globalError.message</p>
+        }
+        <p>@inputText(login("email"), '_label -> "E-Mail", '_class -> "line-input", 'type -> "email", '_error -> login.error("email"))</p>
+        <p>@inputPassword(login("password"), '_label -> "Password", '_class -> "line-input", 'type -> "password", '_error -> login.error("password"))</p>
+        <p>@checkbox(login("saveEmail"), '_label -> None, '_text -> "ログイン情報（メールアドレス）を保存する", '_showConstraints -> false)</p>
+        <p><input type="submit" class="btn primary" value="ログイン"></p>
+    }
+    <p><a href="@controllers.student.routes.Password.viewRepublish">パスワードを忘れた方はこちら</a></p>
+    <p><a href="@controllers.student.routes.Query.index">お問い合わせ</a></p>
+}

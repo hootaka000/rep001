@@ -1,0 +1,8 @@
+@(completed: controllers.forms.student.CompletedForm)
+@import helper._
+
+@views.html.student.main(completed.message + "完了") {
+
+    <p>@{completed.message}が完了しました。</p>
+    <p><a href="@completed.nextUrl">@completed.nextText</a>
+}

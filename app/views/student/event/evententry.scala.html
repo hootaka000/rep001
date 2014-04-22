@@ -1,0 +1,34 @@
+@(eventForm: List[controllers.forms.student.EventForm])
+
+@import helper._
+@import java.util.List;
+
+@views.html.student.main("申込") {
+	<div>
+		<h1>イベント申込</h1>
+	    <table border=1>
+	        <tr><td>予約状況</td><td>開催日</td><td>開催時間</td><td>会場名</td></tr>
+			@for(i <- eventForm) {
+				<tr>
+						<td>
+							@form(CSRF(controllers.student.routes.Event.confirm())) {
+								<input type="hidden" class = "btn primary" name="eventScheduleId" value = "@i.eventScheduleId"/>
+								<input type="hidden" class = "btn primary" name="eventId" value = "@i.eventId"/>
+								<input type="hidden" class = "btn primary" name="entryUserId" value = "@i.entryUserId"/>
+								@if(i.message == ""){
+									<input type="submit" class = "btn primary" value = "予約"/>
+								} else {
+									<label>@i.message</label>
+								}
+
+							}
+						</td>
+						<td><label>@i.eventDate</label></td>
+						<td><label>@i.eventTime</label></td>
+						<td><label>@i.eventVenueName</label></td>
+				</tr>
+			}
+		</table>
+	<input type="button" class = "btn primary" value = "戻る" onclick="javascript:history.back();"/>
+	</div>
+}

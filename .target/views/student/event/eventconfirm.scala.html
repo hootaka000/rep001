@@ -1,0 +1,22 @@
+@(eventForm: Form[controllers.forms.student.EventForm])
+
+@import helper._
+
+@views.html.student.main("申込確認") {
+
+<h1>イベント申込確認画面</h1>
+<h3>@eventForm.get().eventName</h3>
+	@if(eventForm.get().message != null){
+		@eventForm.get().message
+	}
+     @helper.form(action=CSRF(controllers.student.routes.Event.register), 'class -> "form-horizontal", 'id -> "eventForm") {
+
+		@eventcommon(eventForm)
+
+		<input type="button" class = "btn primary" value = "戻る" onclick="javascript:history.back();"/>
+		@if(eventForm.get().message == null){
+			<input type="submit" class = "btn primary" value = "送信"/>
+		}
+
+	}
+}

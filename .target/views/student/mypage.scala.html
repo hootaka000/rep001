@@ -1,0 +1,22 @@
+@(mypageForm: forms.student.MyPageForm)
+
+@import helper._
+
+@main("My Page") {
+    <h1>My Page</h1>
+    @if(mypageForm.mypage.hasGlobalErrors) {
+        <p class="error">@mypageForm.mypage.globalError.message</p>
+    }
+    @helper.form(CSRF(controllers.student.routes.Query.index)) {
+        <p><button type="submit">お問い合わせ</button></p>
+    }
+    @helper.form(CSRF(controllers.student.routes.Password.index)) {
+        <a href="@controllers.student.routes.Password.index">パスワード変更</a>
+    }
+    <a href="@controllers.student.routes.Entry.confirmUnsubscribe">退会</a>
+    <br>
+    <a href="@controllers.student.routes.Event.index(1000005L)">event申込(1000005)</a>
+    <br>
+    <a href="@controllers.student.routes.Event.index(1000001L)">event確認(1000001)</a>
+    <br>
+}

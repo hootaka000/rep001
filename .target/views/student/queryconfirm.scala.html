@@ -1,0 +1,64 @@
+@(queryForm: Form[controllers.forms.QueryForm])
+
+@import helper._
+@import play.api.data.Form
+@import play.api.data.Forms._
+
+@main("お問い合わせ確認") {
+@********************************************
+/*queryform.scala.htmlの画面を表示*/
+@queryform(queryForm)
+********************************************@
+	@form(CSRF(controllers.student.routes.Query.send)) {
+		<h1>お問い合わせ確認</h1>
+		@if(queryForm.hasGlobalErrors) {
+		    <p class="error">@queryForm.globalError.message</p>
+		}
+		<div>
+		<table class="table-bordered" border="1">
+			<tr>
+				<td>お名前(漢字)</td>
+				<td>
+					<label for="lastName">@queryForm.get().lastName</label>
+				</td>
+				<td>
+					<label for="firstName">@queryForm.get().firstName</label>
+				</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td colspan=2>
+					<label for="email">@queryForm.get().email</label>
+				</td>
+			</tr>
+			<tr>
+				<td>IDお持ちの方</td>
+				<td colspan=2>
+					<label for="entryUser">@queryForm.get().entryUser</label>
+				</td>
+			</tr>
+			<tr>
+				<td>お問い合わせ</td>
+				<td colspan=2>
+					<label for="iqtype">@queryForm.get().iqType</label>
+				</td>
+			</tr>
+			<tr>
+				<td>お問い合わせ内容</td>
+				<td colspan=2>
+					<label for="content">@queryForm.get().content</label>
+				</td>
+			</tr>
+		</table>
+
+		<input type="submit" class = "btn primary" value = "確定"/>
+		<input type="hidden" value="@queryForm.get().lastName" name="lastName">
+		<input type="hidden" value="@queryForm.get().firstName" name="firstName">
+		<input type="hidden" value="@queryForm.get().email" name="email">
+		<input type="hidden" value="@queryForm.get().entryUser" name="entryUser">
+		<input type="hidden" value="@queryForm.get().iqType" name="iqType">
+		<input type="hidden" value="@queryForm.get().content" name="content">
+	}
+		<input type="button" class = "btn primary" value = "修正する"  onclick="javascript:history.back();"/>
+</div>
+}

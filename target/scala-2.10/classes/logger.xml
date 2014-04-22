@@ -1,0 +1,55 @@
+
+<configuration>
+    
+  <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+  
+  <!-- FIXME 必要に応じてかえる（＊　productionの時は、production用のlogger.xmlを用意すべき -->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <append>true</append>
+     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+       <fileNamePattern>${application.home}/logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+       <maxHistory>30</maxHistory>
+     </rollingPolicy>
+     <encoder>
+       <pattern>%date - [%level] - [%thread] %message%n%xException</pattern>
+     </encoder>
+   </appender>
+   
+  <!-- TODO Audit Trail logging configration... -->
+  <appender name="FILE_AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+     <append>true</append>
+     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+       <fileNamePattern>${application.home}/logs/saiyo-audit.%d{yyyy-MM-dd}.log</fileNamePattern>
+       <maxHistory>30</maxHistory>
+     </rollingPolicy>
+     <encoder>
+       <pattern>%date - [%level] - [%thread] %message%n</pattern>
+     </encoder>
+   </appender>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%coloredLevel %logger{15} - %message%n%xException{5}</pattern>
+    </encoder>
+  </appender>
+  
+  <logger name="play" level="INFO" />
+  <logger name="application" level="DEBUG" />
+
+  <logger name="utils.AuditLogUtil" level="INFO" additivity="false">
+    <appender-ref ref="FILE_AUDIT" />
+  </logger>
+
+  <!-- Off these ones as they are annoying, and anyway we manage configuration ourself -->
+  <logger name="com.avaje.ebean.config.PropertyMapLoader" level="OFF" />
+  <logger name="com.avaje.ebeaninternal.server.core.XmlConfigLoader" level="OFF" />
+  <logger name="com.avaje.ebeaninternal.server.lib.BackgroundThread" level="OFF" />
+  <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
+
+  <root level="ERROR">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </root>
+  
+  
+</configuration>

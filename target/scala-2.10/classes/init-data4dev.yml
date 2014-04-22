@@ -1,0 +1,495 @@
+prefectures:
+
+  - !!models.Prefectures
+    name: 北海道
+    area: 1
+    postalCodes:
+      - !!models.PostalCode
+        placeName: 札幌市中央区中央区
+        codeNumber1: 60
+        codeNumber2: 0
+
+      - !!models.PostalCode
+        placeName: 札幌市中央区旭ヶ丘
+        codeNumber1: 64
+        codeNumber2: 941
+        
+      - !!models.PostalCode
+        placeName: 札幌市中央区大通東
+        codeNumber1: 60
+        codeNumber2: 41
+        
+    schools:
+      - !!models.School
+        delflag: false
+        name: 北海道大学
+        division: 1
+        schoolDepartments:
+          - !!models.SchoolDepartment
+            delflag: false
+            department: 工学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 情報エレクトロニクス学科
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 応用理工系学科
+
+
+  - !!models.Prefectures
+    name: 青森県
+    area: 1
+
+  - !!models.Prefectures
+    name: 岩手県
+    area: 1
+
+  - !!models.Prefectures
+    name: 宮城県
+    area: 1
+
+  - !!models.Prefectures
+    name: 秋田県
+    area: 1
+
+  - !!models.Prefectures
+    name: 山形県
+    area: 1
+
+  - !!models.Prefectures
+    name: 福島県
+    area: 1
+
+  - !!models.Prefectures
+    name: 茨城県
+    area: 2
+
+  - !!models.Prefectures
+    name: 栃木県
+    area: 2
+
+  - !!models.Prefectures
+    name: 群馬県
+    area: 2
+
+  - !!models.Prefectures
+    name: 埼玉県
+    area: 2
+
+  - !!models.Prefectures
+    name: 千葉県
+    area: 2
+
+  - !!models.Prefectures
+    name: 東京都
+    area: 2
+    postalCodes:
+      - !!models.PostalCode
+        placeName: 渋谷区恵比寿ガーデンプレイス（１階）
+        codeNumber1: 150
+        codeNumber2: 6001
+
+      - !!models.PostalCode
+        placeName: 渋谷区円山町
+        codeNumber1: 150
+        codeNumber2: 44
+    schools:
+      - !!models.School
+        delflag: false
+        name: 東京大学
+        division: 1
+        schoolDepartments:
+          - !!models.SchoolDepartment
+            delflag: false
+            department: 工学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 工学部
+          - !!models.SchoolDepartment
+            delflag: false
+            department: 理学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 理学部
+      - !!models.School
+        delflag: false
+        name: 早稲田大学
+        division: 1
+        schoolDepartments:
+          - !!models.SchoolDepartment
+            delflag: false
+            department: 政治経済学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 政治学科
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 経済学科
+          - !!models.SchoolDepartment
+            delflag: false
+            department: 法学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 法学部
+
+
+  - !!models.Prefectures
+    name: 神奈川県
+    area: 2
+
+  - !!models.Prefectures
+    name: 新潟県
+    area: 3
+
+  - !!models.Prefectures
+    name: 富山県
+    area: 3
+
+  - !!models.Prefectures
+    name: 石川県
+    area: 3
+
+  - !!models.Prefectures
+    name: 福井県
+    area: 3
+
+  - !!models.Prefectures
+    name: 山梨県
+    area: 3
+
+  - !!models.Prefectures
+    name: 長野県
+    area: 3
+
+  - !!models.Prefectures
+    name: 岐阜県
+    area: 3
+
+  - !!models.Prefectures
+    name: 静岡県
+    area: 3
+
+  - !!models.Prefectures
+    name: 愛知県
+    area: 3
+
+  - !!models.Prefectures
+    name: 三重県
+    area: 4
+
+  - !!models.Prefectures
+    name: 滋賀県
+    area: 4
+
+  - !!models.Prefectures
+    name: 京都府
+    area: 4
+
+  - !!models.Prefectures
+    name: 大阪府
+    area: 4
+    postalCodes:
+      - !!models.PostalCode
+        placeName: 大阪市福島区海老江
+        codeNumber1: 553
+        codeNumber2: 1
+    schools:
+      - !!models.School
+        delflag: false
+        name: 関西大学
+        division: 1
+        schoolDepartments:
+          - !!models.SchoolDepartment
+            delflag: false
+            department: システム理工学部
+            schoolSubjects:
+              - !!models.SchoolSubject
+                delflag: false
+                subject: 電気電子情報工学科
+
+  - !!models.Prefectures
+    name: 兵庫県
+    area: 4
+
+  - !!models.Prefectures
+    name: 奈良県
+    area: 4
+
+  - !!models.Prefectures
+    name: 和歌山県
+    area: 4
+
+  - !!models.Prefectures
+    name: 鳥取県
+    area: 5
+
+  - !!models.Prefectures
+    name: 島根県
+    area: 5
+
+  - !!models.Prefectures
+    name: 岡山県
+    area: 5
+
+  - !!models.Prefectures
+    name: 広島県
+    area: 5
+
+  - !!models.Prefectures
+    name: 山口県
+    area: 5
+
+  - !!models.Prefectures
+    name: 徳島県
+    area: 6
+
+  - !!models.Prefectures
+    name: 香川県
+    area: 6
+
+  - !!models.Prefectures
+    name: 愛媛県
+    area: 6
+
+  - !!models.Prefectures
+    name: 高知県
+    area: 6
+
+  - !!models.Prefectures
+    name: 福岡県
+    area: 7
+
+  - !!models.Prefectures
+    name: 佐賀県
+    area: 7
+
+  - !!models.Prefectures
+    name: 長崎県
+    area: 7
+
+  - !!models.Prefectures
+    name: 熊本県
+    area: 7
+
+  - !!models.Prefectures
+    name: 大分県
+    area: 7
+
+  - !!models.Prefectures
+    name: 宮崎県
+    area: 7
+
+  - !!models.Prefectures
+    name: 鹿児島県
+    area: 7
+
+  - !!models.Prefectures
+    name: 沖縄県
+    area: 7
+
+
+employee:
+  - !!models.Employee
+    employeeNumber: A12152
+    name: 宮嶋雅文
+    employeeStatus: 1
+    
+  - !!models.Employee
+    employeeNumber: A13413
+    name: 清水健司
+    employeeStatus: 1
+    
+  - !!models.Employee
+    employeeNumber: A12609
+    name: 川瀬麻子
+    employeeStatus: 1
+    
+  - !!models.Employee
+    employeeNumber: B03401
+    name: 与儀実篤
+    employeeStatus: 1
+    
+  - !!models.Employee
+    employeeNumber: B05138
+    name: 高畑知史
+    employeeStatus: 1
+
+company:
+  - !!models.Company
+    name: 株式会社サイバーエージェント
+    jobTypes:
+      - !!models.JobType
+        name: インターネット広告営業
+      - !!models.JobType
+        name: プログラマ
+      - !!models.JobType
+        name: デザイナ
+      - !!models.JobType
+        name: 経理・法務
+    entryUsers:
+      - !!models.EntryUser
+        birthday: "1994-11-11"
+        lastName: 渋谷
+        lastNameKana: シブヤ
+        #middleName: Washington
+        #middleNameKana: ワシントン
+        firstName: 太郎
+        firstNameKana: タロウ
+        email: "shibuya-test@test.local"
+        applicationYear: 2016
+        sex: 0
+        password: cyberagent
+        entryDate: "2015-11-01"
+        entryType: 1
+        entryStatus: 1
+        dataUrl: http://www.aaa.bbb1.local/
+        activation: true
+        delflag: false
+        
+      - !!models.EntryUser
+        birthday: "1992-12-11"
+        lastName: 新宿
+        lastNameKana: シンジュク
+        #middleName: Washington
+        #middleNameKana: ワシントン
+        firstName: 花子
+        firstNameKana: ハナコ
+        email: "shinjuku-test@test.local"
+        applicationYear: 2016
+        sex: 1
+        password: cyberagent
+        entryDate: "2015-10-01"
+        entryType: 2
+        entryStatus: 1
+        #dataUrl: http://www.aaa.bbb2.local/
+        activation: true
+        delflag: false
+        
+      - !!models.EntryUser
+        birthday: "1994-11-11"
+        lastName: America
+        lastNameKana: アメリカ
+        middleName: Washington
+        middleNameKana: ワシントン
+        firstName: Paul
+        firstNameKana: ポール
+        email: "us-w-w@test.local"
+        applicationYear: 2016
+        sex: 0
+        password: cyberagent
+        entryDate: "2015-12-01"
+        entryType: 1
+        entryStatus: 1
+        dataUrl: http://www.aaa.bbb3.local/
+        activation: true
+        delflag: false
+        
+      - !!models.EntryUser
+        birthday: "1994-11-11"
+        lastName: 太郎
+        lastNameKana: たろう
+        middleName: 
+        middleNameKana: 
+        firstName: テスト
+        firstNameKana: テスト
+        email: "ok@mail.com"
+        applicationYear: 2016
+        sex: 0
+        password: okpassword
+        entryDate: "2015-12-01"
+        entryType: 1
+        entryStatus: 1
+        dataUrl: http://www.aaa.bbb3.local/
+        activation: true
+        delflag: false
+
+      - !!models.EntryUser
+        birthday: "1994-11-11"
+        lastName: 太郎
+        lastNameKana: たろう
+        middleName: 
+        middleNameKana: 
+        firstName: 削除
+        firstNameKana: さくじょ
+        email: "del@mail.com"
+        applicationYear: 2016
+        sex: 0
+        password: delpassword
+        entryDate: "2015-12-01"
+        entryType: 1
+        entryStatus: 1
+        dataUrl: http://www.aaa.bbb3.local/
+        activation: true
+        delflag: true
+
+  - !!models.Company
+    name: 株式会社Cygames
+    jobTypes:
+      - !!models.JobType
+        name: プログラマ
+      - !!models.JobType
+        name: デザイナ
+      - !!models.JobType
+        name: 総務
+    entryUsers:
+      - !!models.EntryUser
+        birthday: "1994-11-10"
+        lastName: 池袋
+        lastNameKana: イケブクロ
+        #middleName: Washington
+        #middleNameKana: ワシントン
+        firstName: 二郎
+        firstNameKana: ジロウ
+        email: "ikebukuro-test@test.local"
+        applicationYear: 2016
+        sex: 0
+        password: cyberagent
+        entryDate: "2015-09-01"
+        entryType: 1
+        entryStatus: 4
+        dataUrl: http://www.aaa.local/
+        activation: true
+        delflag: false
+
+venue:
+  - !!models.Venue
+    name: マークシティ
+    contact: recruit@cyberagnet.local
+    address: 東京都渋谷区道玄坂1丁目12番1号 渋谷マークシティ　ウエスト17階（総合受付）・13階
+    facilities:
+      - !!models.Facility
+        cybozid: 561
+        name: "マークシティ13F_SeminarRoom-A(スクール形式204名)"
+      - !!models.Facility
+        cybozid: 637
+        name: "マークシティ13F_SeminarRoom-B(スクール形式166名)"
+    transportations:
+      - !!models.Transportation
+        name: "京王井の頭線　渋谷中央口より EAST MALL 2Fに直結"
+      - !!models.Transportation
+        name: "JR山手線/埼京線 渋谷駅より 京王井の頭線渋谷方面にお越しください"
+
+    
+  - !!models.Venue
+    name: ガーデンタワー
+    contact: recruit@cyberagnet.local
+    address: 東京都渋谷区南平台町16番17号　住友不動産渋谷ガーデンタワー
+    facilities:
+      - !!models.Facility
+        cybozid: 532
+        name: "ガーデンタワー15F_Seminar-A(50名)"
+    transportations:
+      - !!models.Transportation
+        name: "「神泉駅」南口徒歩６分（井の頭線）"
+
+
+systemMaster:
+  - !!models.SystemMaster
+    configKey: admtargetyear
+    configValue: "2015,2016"
+    description: "管理側で扱う採用対象年度"

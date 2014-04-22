@@ -1,0 +1,75 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+# Home page
+GET     /student/index              controllers.student.Application.index()
+POST    /student/login              controllers.student.Application.login()
+POST    /student/logout             controllers.student.Application.logout()
+GET     /student/completed          controllers.student.Application.completed()
+GET     /student/agree              controllers.student.Application.agree()
+
+GET     /student/mypage             controllers.student.MyPage.index()
+
+GET     /student/unsubscribe        controllers.student.Entry.confirmUnsubscribe()
+POST    /student/unsubscribe        controllers.student.Entry.unsubscribe()
+
+# Common
+POST     /schools/:division/:prefecture      controllers.Application.schools(division:String , prefecture:String)
+POST     /departments/:schoolid              controllers.Application.departments(schoolid:String)
+POST     /subjects/:departmentid             controllers.Application.subjects(departmentid:String)
+POST     /postcode/:uppercode/:lowercode     controllers.Application.postcode(uppercode:String , lowercode:String)
+POST     /division/$division<[0-9]+>        controllers.Application.division(division:Integer)
+
+# Sample ↓いずれけします
+GET		/student/sample/index		controllers.student.Sample.index()
+POST	/student/sample/doPost		controllers.student.Sample.doTest()
+# Sample ↑いずれけします
+
+# Password
+GET     /student/password/republish controllers.student.Password.viewRepublish()
+POST    /student/password/republish controllers.student.Password.republish()
+
+#Query
+GET     /student/query              controllers.student.Query.index()
+GET     /student/queryform          controllers.student.Query.view()
+GET     /student/queryform/confirm  controllers.student.Query.confirm()
+POST    /student/queryform          controllers.student.Query.send()
+
+GET     /student/password           controllers.student.Password.index()
+POST    /student/password           controllers.student.Password.update()
+
+#event
+GET     /student/event/entry/:eventid        controllers.student.Event.index(eventid: Long)
+POST     /student/event/confirm               controllers.student.Event.confirm()
+POST    /student/event/entry                 controllers.student.Event.register()
+#GET     /student/event                       controllers.student.Event.view()
+GET     /student/event/cancel                controllers.student.Event.confirmCancel()
+POST    /student/event/cancel                controllers.student.Event.cancel()
+
+# admin
+GET     /admin                      controllers.admin.Application.index()
+POST    /admin/login                controllers.admin.Application.login()
+
+GET     /admin/dashbord               controllers.admin.Administrator.index()
+GET     /admin/dashboard/acitivity    controllers.admin.Administrator.dashBoardActivity()
+GET     /admin/dashboard/schedule     controllers.admin.Administrator.dashBoardSchedule()
+GET     /admin/dashboard/lap          controllers.admin.Administrator.dashBoardLap(empNo:String, monthTerm:Integer)
+GET     /admin/dashboard/event        controllers.admin.Administrator.dashBoardEvent(jobTypeId:Long, eventGroupId:Long)
+
+POST    /admin/logout               controllers.admin.Application.logout()
+
+GET     /admin/student/search       controllers.admin.Student.search()
+POST    /admin/student/search       controllers.admin.Student.searchResult()
+GET     /admin/groups               controllers.admin.Group.index()
+POST    /admin/groups               controllers.admin.Group.gainGroupList()
+GET     /admin/schoolgroups         controllers.admin.SchoolGroup.index()
+POST    /admin/schoolgroups         controllers.admin.SchoolGroup.gainSchoolGroups()
+GET     /admin/schoolgroup/new      controllers.admin.SchoolGroup.newSchoolGroup()
+POST    /admin/schoolgroup/new      controllers.admin.SchoolGroup.searchSchool()
+POST    /admin/schoolgroup/new/confirm      controllers.admin.SchoolGroup.confirm()
+POST    /admin/schoolgroup/new/register     controllers.admin.SchoolGroup.register()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

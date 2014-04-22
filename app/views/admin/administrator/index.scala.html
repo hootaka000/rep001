@@ -1,0 +1,51 @@
+@(login: Form[controllers.forms.admin.IndexForm])
+@import helper._
+
+@stylesheets = {
+  <link rel="stylesheet"
+        media="screen"
+        href="@routes.Assets.at("stylesheets/" + lang().language() + "/admin/dashboard/site.min.css")"></link>
+}
+@scripts = {
+  <script src="@routes.Assets.at("javascripts/admin/dashboard/site.min.js")"></script>
+}
+
+@views.html.admin.main("ダッシュボード", stylesheets, scripts) {
+
+	<h2>ダッシュボード</h2>
+
+    @form(CSRF(controllers.admin.routes.Application.logout)) {
+
+		@*
+		作業メモ
+		+ とりあえずデータが引っ張ってこれれば、いい
+		*@
+        
+        <p>
+          <p><input type="submit" class="btn primary" value="logout"></p>
+        </p>
+        
+    }
+
+	<h3>アクティビティ（仮）</h3>
+	<div id="dashboard-activity-area">
+		loading...	
+	</div>
+	
+	<h3>スケジュール（仮）</h3>
+	<div id="dashboard-schedule-area">
+		loading...	
+	</div>
+	
+	<h3>ラップ（仮）</h3>
+	<div id="dashboard-lap-area">
+		loading...	
+	</div>
+	
+	<h3>イベント（仮）</h3>
+	<div id="dashboard-event-area">
+		loading...	
+	</div>
+
+
+}

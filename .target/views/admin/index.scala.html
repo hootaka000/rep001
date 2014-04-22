@@ -1,0 +1,33 @@
+@(login: Form[controllers.forms.admin.LoginForm])
+@import helper._
+
+@views.html.admin.main("ログイン") {
+
+    @form(CSRF(controllers.admin.routes.Application.login)) {
+        <h2>ログイン</h2>
+        
+        @if(login.hasGlobalErrors) {
+          <p class="error">@login.globalError.message</p>
+        }
+
+        <p>
+          @inputText(
+			login("employeeNumber"),
+			 '_label -> "Employee Number",
+			 '_class -> "line-input",
+			 'type -> "text",
+			 '_error -> login.error("employeeNumber"))
+        </p>
+        <p>
+          @inputPassword(
+			login("password"),
+			 '_label -> "Password",
+			 '_class -> "line-input",
+			 'type -> "password",
+			 '_error -> login.error("password"))
+        </p>
+
+        <p><input type="submit" class="btn primary" value="login"></p>
+    }
+
+}

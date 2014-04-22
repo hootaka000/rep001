@@ -1,0 +1,58 @@
+@(queryForm: Form[controllers.forms.QueryForm])
+
+@import helper._
+
+@main("お問い合わせフォーム") {
+	@form(CSRF(controllers.student.routes.Query.confirm)) {
+		<h1>お問い合わせフォーム</h1>
+		@if(queryForm.hasGlobalErrors) {
+		    <p class="error">@queryForm.globalError.message</p>
+		}
+
+			<table class="table-bordered" border="1">
+				<tr>
+					<td>◆漢字氏名</td>
+					<td>
+					    @inputText(queryForm("lastName"), '_label -> "姓 : " , '_class -> "line-input", '_showConstraints -> false)
+					</td>
+					<td>
+					    @inputText(queryForm("firstName"), '_label -> "名 : " , '_class -> "line-input", '_showConstraints -> false)
+					</td>
+				</tr>
+				<tr>
+					<td>◆E-mailアドレス</td>
+					<td colspan=2>
+						@inputText(queryForm("email"), '_label -> "" ,'_class -> "line-input", 'style->"width:350px;", 'placeholder -> "yamada@cyberagent.co.jp", '_showConstraints -> false)
+					</td>
+				</tr>
+				<tr>
+					<td>IDお持ちの方</td>
+					<td colspan=2>
+					@inputText(queryForm("entryUser"), '_label -> "ID : " ,'_class -> "line-input", '_showConstraints -> false)
+					</td>
+				</tr>
+				<tr>
+					<td>◆お問い合わせ</td>
+					<td colspan=2>@inputRadioGroup(
+							queryForm("iqType"),
+								options = Seq("0" -> "ID・パスワードについて"
+											, "1" -> "選考について"
+											, "99" -> "その他"),
+									'_label -> "", '_showConstraints -> false)
+					</td>
+				</tr>
+				<tr>
+					<td>◆お問い合わせ内容(1000文字以内でご記入ください。)</td>
+					<td colspan=2>
+					    @textarea(queryForm("content"), '_label -> "" , '_class -> "line-input", '_showConstraints -> false)
+					</td>
+				</tr>
+			</table>
+			<label class="control-label"></label>
+			<input type="submit" class="btn primary" value="登録">
+
+	}
+	@form(CSRF(controllers.student.routes.Query.index)) {
+		<input type="submit" class="btn primary" value="戻る"  onclick="javascript:history.back();">
+	}
+}

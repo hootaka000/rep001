@@ -1,0 +1,14 @@
+@(repub: Form[controllers.forms.student.RepublishForm])
+@import helper._
+
+@views.html.student.main("パスワード再発行") {
+
+    @form(CSRF(controllers.student.routes.Password.republish)) {
+        <h1>パスワード再発行</h1>
+        @if(repub.hasGlobalErrors) {
+            <p class="error">@repub.globalError.message</p>
+        }
+        <p>@inputText(repub("email"), '_label -> "E-Mail", '_class -> "line-input", 'type -> "email")</p>
+        <p><input type="submit" class="btn primary" value="パスワード再発行"></p>
+    }
+}

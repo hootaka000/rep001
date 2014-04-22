@@ -1,0 +1,45 @@
+@(eventForm: Form[controllers.forms.student.EventForm])
+
+@import helper._
+	    <table border=1>
+	        <tr>
+	        	<td>氏名</td><td>@eventForm.get().entryUserName</td>
+	        </tr>
+	        <tr>
+	        	<td>ID</td><td>@eventForm.get().entryUserIdEmail</td>
+	        </tr>
+	        <tr>
+	        	<td>開催日</td><td>@eventForm.get().eventDate</td>
+	        </tr>
+	        <tr>
+	        	<td>開催時間</td><td>@eventForm.get().eventTime</td>
+	        </tr>
+	        <tr>
+	        	<td>会場名</td><td><label>@eventForm.get().eventVenueName</label></td>
+	        </tr>
+	        <tr>
+	        	<td>住所</td><td>@eventForm.get().eventVenueAddress</td>
+	        </tr>
+	        <tr>
+	        	<td>問い合わせ</td><td>@eventForm.get().eventContact</td>
+	        </tr>
+
+	        @for(i <- eventForm.get().eventTrans){
+	        <tr >
+		        <td>交通</td>
+				<td>@i.name</td>
+      		</tr >
+	        }
+
+	        
+	        @for(j <- eventForm.get().eventAddTexts){
+	        <tr>
+	        	<td>@j.title</td>
+	        	<td>@j.message</td>
+	        </tr>
+	        }
+	    </table>
+		<input type="hidden" value="@eventForm.get().eventScheduleId" name="eventScheduleId">
+		<input type="hidden" value="@eventForm.get().entryUserId" name="entryUserId">
+		<input type="hidden" value="@eventForm.get().eventId" name="eventId">
+		

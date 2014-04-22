@@ -1,0 +1,230 @@
+@(studentSearchForm: Form[controllers.forms.admin.StudentSearchForm])(entryUserList: List[models.EntryUser])
+
+@import helper._
+
+@main(title = "学生検索画面") {
+
+    <h1>学生検索画面:</h1>
+
+    @form(CSRF(controllers.admin.routes.Student.searchResult)) {
+
+        <table border=0>
+            <tr>
+                <td colspan=3>
+                    @* 採用年度 *@
+                    @select(
+                        field = studentSearchForm("applicationYear"),
+                        options = options(
+                            "-1" -> "20xx年度",
+                            "2016" -> "2016年度",
+                            "2015" -> "2015年度",
+                            "2014" -> "2014年度"
+                                  ),
+                        args = '_label -> "採用年度"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @* 氏名(姓) *@
+                    @inputText(
+                        field = studentSearchForm("lastName"),
+                        args = '_label -> "氏名(姓)", 'placeholder -> ""
+                    )
+                </td>
+                <td>
+                    @* 氏名(名) *@
+                    @inputText(
+                        field = studentSearchForm("firstName"),
+                        args = '_label -> "氏名(名)", 'placeholder -> ""
+                    )
+                </td>
+                <td>
+                    @* 性別 *@
+                    @select(
+                        field = studentSearchForm("sex"),
+                        options = options(
+                            "-1" -> "ALL",
+                            "0" -> "男性",
+                            "1" -> "女性"
+                                  ),
+                        args = '_label -> "性別"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3>
+                    @* グループ *@
+                    @select(
+                        field = studentSearchForm("complexGroup.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainComplexGroupList()),
+                        args = '_label -> "グループ", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @* 大学グループ *@
+                    @select(
+                        field = studentSearchForm("schoolGroup.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolGroupList()),
+                        args = '_label -> "大学グループ", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+                <td>
+                    @* 学校区分 *@
+                    @select(
+                        field = studentSearchForm("division"),
+                        options = options(
+                            "-1" -> "ALL",
+                            "1" -> "大学",
+                            "2" -> "大学院(修士)",
+                            "3" -> "大学(博士)",
+                            "4" -> "外国大学日本校",
+                            "5" -> "外国大学"
+                              ),
+                        args = '_label -> "学校区分"
+                    )
+                </td>
+                <td>
+                    @* 文理区分 *@
+                    @select(
+                        field = studentSearchForm("classification"),
+                        options = options(
+                            "-1" -> "ALL",
+                            "1" -> "文系",
+                            "2" -> "理系"
+                                  ),
+                        args = '_label -> "文理区分"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @* 大学 *@
+                    @select(
+                        field = studentSearchForm("school.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolList()),
+                        args = '_label -> "大学", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+                <td>
+                    @* 学部 *@
+                    @select(
+                        field = studentSearchForm("schoolDepartment.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolDepartmentList()),
+                        args = '_label -> "学部", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @* 都道府県 *@
+                    @select(
+                        field = studentSearchForm("prefectures.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainPrefecturesList()),
+                        args = '_label -> "都道府県", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+                <td colspan=2>
+                    @* 電話番号 *@
+                    @inputText(
+                        field = studentSearchForm("phoneNo"),
+                        args = '_label -> "電話番号"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3>
+                    @* E-mailアドレス *@
+                    @inputText(
+                        field = studentSearchForm("email"),
+                        args = '_label -> "E-mailアドレス", 'placeholder -> "xxx@xx.xx.xx"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3>
+                    @* 応募者ID *@
+                    @inputText(
+                        field = studentSearchForm("entryUserIds"),
+                        args = '_label -> "応募者ID"
+                    )
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @* イベント *@
+                    @select(
+                        field = studentSearchForm("event.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainEventList()),
+                        args = '_label -> "イベント", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+                <td>
+                    @* イベント日程 *@
+                    @select(
+                        field = studentSearchForm("eventSchedule.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainEventScheduleList()),
+                        args = '_label -> "イベント日程", '_default -> "ALL", '_showConstraints -> false
+                    )
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan=3>
+                    @* 選考ステータス *@
+                    @select(
+                        field = studentSearchForm("entryStatus"),
+                        options = options(
+                            "-1" -> "ALL",
+                            "1" -> "未選考",
+                            "2" -> "選考中",
+                            "3" -> "不合格",
+                            "4" -> "辞退",
+                            "5" -> "内定",
+                            "6" -> "内定辞退",
+                            "7" -> "内々定"
+                                  ),
+                        args = '_label -> "選考ステータス"
+                    )
+                </td>
+            </tr>
+        </table>
+
+        <p class="buttons">
+            <input type="submit" value="検索">
+        <p>
+
+    }
+
+    <hr>
+
+    @if(entryUserList != null) {
+        <h1>学生検索結果:</h1>
+
+
+
+            <table border=1>
+                <tr><td>選択</td><td>応募者ID</td><td>氏名</td><td>編集</td><td>削除</td></tr>
+
+                @for(i <- entryUserList) {
+                    <tr>
+                        <td>@*@checkbox(field = false)*@</td>
+                        <td>@i.id</td>
+                        <td><a href="@i.dataUrl">@i.lastName @i.firstName</a></td>
+                        <td>編集</td>
+                        <td>削除</td>
+                    </tr>
+                }
+            </table>
+
+    }
+
+}
+
+
+
+
+

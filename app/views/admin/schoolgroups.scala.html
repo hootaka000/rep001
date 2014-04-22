@@ -1,0 +1,63 @@
+@(appYearForm: Form[controllers.forms.admin.AppYearForm])(schoolGroupList: List[models.SchoolGroup])
+
+@import helper._
+
+@main(title = "大学グループ一覧画面") {
+
+<script Language="JavaScript">
+function getValue(selOBJ) {
+    document.selectYear.submit();
+    }
+</script>
+
+    <h1>大学グループ一覧画面:</h1>
+
+    <table>
+        <tr>
+            <td>
+                @form(action=CSRF(controllers.admin.routes.SchoolGroup.gainSchoolGroups), 'name -> "selectYear") {
+
+                    @* 採用年度 *@
+                    @select(
+                        field = appYearForm("applicationYear"),
+                        options = options(
+                            "-1" -> "20xx年度",
+                            "2016" -> "2016年度",
+                            "2015" -> "2015年度",
+                            "2014" -> "2014年度"
+                                  ),
+                        args = '_label -> "採用年度", 'onchange -> "getValue(this)"
+                    )
+                }
+            </td>
+            <td><a href="schoolgroup/new">新規登録</a></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    @if(schoolGroupList != null) {
+
+        <table border=1>
+            <tr><td>大学グループ名</td><td>学生数</td><td>更新</td><td>メール</td><td>コメント</td><td>削除</td></tr>
+
+            @for(i <- schoolGroupList) {
+                <tr>
+                    <td>あああああ</td>
+                    <td>20</td>
+                    <td>@***<a href="@i.dataUrl">更新</a>***@</td>
+                    <td>メール</td>
+                    <td>コメント</td>
+                    <td>削除</td>
+                </tr>
+            }
+        </table>
+    }
+
+
+}
+
+
+
+
+

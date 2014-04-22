@@ -1,0 +1,40 @@
+@(ssfForm: Form[controllers.forms.admin.SchoolSearchForm])
+
+@import helper._
+
+@main(title = "大学グループ登録確認画面") {
+
+    <h1>大学グループ登録確認画面:</h1>
+
+    <hr>
+
+    @form(CSRF(controllers.admin.routes.SchoolGroup.register)) {
+
+        <label for="schoolGroupName">@ssfForm.get().schoolGroupName</label>
+
+        <table border=1>
+            <tr><td>大学</td><td>学部</td><td>学科</td></tr>
+            @***
+            @for(i <- ssfForm.get().schoolSearchList) {
+                <tr>
+                    <td>@i.schoolGroupCondition.school.name</td>
+                    <td>@i.schoolGroupCondition.schoolDepartment.department</td>
+                    <td>@i.schoolGroupCondition.schoolSubject.subject</td>
+                </tr>
+            }
+            ***@
+        </table>
+
+        <p class="buttons">
+            <input type="submit" value="登録">
+            <input type="button" value="戻る" onclick="history.back();">
+        <p>
+
+    }
+
+}
+
+
+
+
+

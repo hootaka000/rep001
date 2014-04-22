@@ -1,0 +1,9 @@
+@import helper._
+
+@views.html.student.main("退会") {
+
+    @form(CSRF(controllers.student.routes.Entry.unsubscribe)) {
+        <p>本当に退会しますか？</p>
+        <p><input type="submit" class="btn primary" value="退会"></p>
+    }
+}

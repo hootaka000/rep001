@@ -1,0 +1,124 @@
+@(schoolSearchForm: Form[controllers.forms.admin.SchoolSearchForm])(ssf: controllers.forms.admin.SchoolSearchForm)
+
+@import helper._
+
+<script Language="JavaScript">
+function goReturn() {
+    location.href = "/admin/schoolgroups";
+    }
+</script>
+
+@main(title = "大学グループ登録画面") {
+
+    <h1>大学グループ登録画面:</h1>
+
+    @form(CSRF(controllers.admin.routes.SchoolGroup.searchSchool)) {
+
+        <table border=0>
+            <tr>
+                <td>
+                    @* 地域 *@
+                    @select(
+                        field = schoolSearchForm("prefectures.area"),
+                        options = options(
+                            "1" -> "北海道・東北",
+                            "2" -> "関東",
+                            "3" -> "中部",
+                            "4" -> "近畿",
+                            "5" -> "中国",
+                            "6" -> "四国",
+                            "7" -> "九州"
+                              ),
+                        args = '_label -> "地域", '_default -> "全国", '_showConstraints -> false, 'size -> 5
+                    )
+                </td>
+                <td>
+                    @* 都道府県 *@
+                    @select(
+                        field = schoolSearchForm("prefectures.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainPrefecturesList()),
+                        args = '_label -> "都道府県", '_default -> "ALL", '_showConstraints -> false, 'size -> 5
+                    )
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @* 大学 *@
+                    @select(
+                        field = schoolSearchForm("school.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolList()),
+                        args = '_label -> "大学", '_default -> "ALL", '_showConstraints -> false, 'size -> 5
+                    )
+                </td>
+                <td>
+                    @* 学部 *@
+                    @select(
+                        field = schoolSearchForm("schoolDepartment.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolDepartmentList()),
+                        args = '_label -> "学部", '_default -> "ALL", '_showConstraints -> false, 'size -> 5
+                    )
+                </td>
+                <td>
+                    @* 学科 *@
+                    @select(
+                        field = schoolSearchForm("schoolSubject.id"),
+                        options = options(models.services.admin.StudentSearchService.getInstance().gainSchoolSubjectList()),
+                        args = '_label -> "学部", '_default -> "ALL", '_showConstraints -> false, 'size -> 5
+                    )
+                </td>
+            </tr>
+        </table>
+
+        <p class="buttons">
+            <input type="submit" value="検索">
+        <p>
+
+    }
+
+    <hr>
+
+    @if(ssf != null) {
+        @form(CSRF(controllers.admin.routes.SchoolGroup.confirm)) {
+
+            @* 大学グループ名 *@
+            @inputText(
+                field = schoolSearchForm("schoolGroupName"),
+                args = '_label -> "大学グループ名", 'placeholder -> ""
+            )
+
+            <table border=1>
+                <tr><td>選択</td><td>大学</td><td>学部</td><td>学科</td></tr>
+                @for(i <- ssf.schoolSearchList) {
+                    <tr>
+                        <td>@checkbox(field = schoolSearchForm("checkFlg"),
+                                      args = '_label -> None, '_showConstraints -> false
+                                     )
+                        </td>
+                        <td>@i.schoolGroupCondition.school.name</td>
+                        <td>@i.schoolGroupCondition.schoolDepartment.department</td>
+                        <td>@i.schoolGroupCondition.schoolSubject.subject</td>
+                        <input type="hidden" value="@i.schoolGroupCondition.school.name" name="schoolname[]">
+                        <input type="hidden" value="@i.schoolGroupCondition.schoolDepartment.department" name="department[]">
+                        <input type="hidden" value="@i.schoolGroupCondition.schoolSubject.subject" name="subject[]">
+                    </tr>
+                }
+            </table>
+
+
+
+            <p class="buttons">
+                <input type="submit" value="確認">
+                <input type="button" value="戻る" onclick="goReturn()">
+            <p>
+
+        }
+    }
+
+}
+
+
+
+
+

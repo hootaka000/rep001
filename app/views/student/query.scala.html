@@ -1,0 +1,30 @@
+@(queryForm: Form[controllers.forms.QueryForm])
+
+@import helper._
+
+@main("お問い合わせ") {
+@form(CSRF(controllers.student.routes.Query.view)) {
+    <h1>お問い合わせ</h1>
+    @if(queryForm.hasGlobalErrors) {
+        <p class="error">@queryForm.globalError.message</p>
+    }
+<div class="container">
+	<label class="control-label"></label>
+	<table class="table-bordered" >
+		<tr>
+			<td>
+				<label>link：</label>
+				<a href="@controllers.student.routes.Query.view">お問い合わせ</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>ボタン：</label>
+				<input type="submit" class = "btn primary" value = "お問い合わせ"/>
+			</td>
+		</tr>
+	</table>
+	<input type="button" class="btn primary" value="戻る"  onclick="javascript:history.back();">
+</div>
+  }
+}
